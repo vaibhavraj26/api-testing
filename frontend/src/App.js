@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import './App.css';
 import DataForm from './components/DataForm';
@@ -14,12 +14,7 @@ function App() {
   // Use environment variable for API URL (for deployment)
   const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
-  // Fetch all data on component mount
-  useEffect(() => {
-    fetchAllData();
-  }, []);
-
-  const fetchAllData = async () => {
+  const fetchAllData = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
@@ -31,7 +26,12 @@ function App() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [API_BASE_URL]);
+
+  // Fetch all data on component mount
+  useEffect(() => {
+    fetchAllData();
+  }, [fetchAllData]);
 
   const handleAddData = async (formData) => {
     try {
