@@ -1,0 +1,14 @@
+# Render Blueprint specification
+services:
+  - type: web
+    name: testing-backend
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: MONGO_URI
+        sync: false
+      - key: PORT
+        value: 5000
+      - key: NODE_ENV
+        value: production
