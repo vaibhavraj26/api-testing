@@ -2,6 +2,9 @@
 
 A full-stack testing application with **React** frontend, **Node.js** backend, and **MongoDB Atlas** database. Optimized for deployment on **Vercel** (frontend) and **Render** (backend).
 
+## Preview
+<img src="assets/preview.png" alt="Project Preview" width="700">
+
 ## Project Structure
 
 ```
